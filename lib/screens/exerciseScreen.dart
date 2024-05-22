@@ -1,4 +1,6 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:gymfit/common/colors.dart';
 import 'package:gymfit/models/modelExercise.dart';
 import 'package:gymfit/models/modelFeeling.dart';
 
@@ -34,19 +36,32 @@ class ExerciseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 54, 3, 91),
+      backgroundColor: MyColors.roxoForte,
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 54, 3, 91),
-          title: Text(
-            '${modelExercise.name} - ${modelExercise.training}',
+          title: Column( children: [
+            Text(modelExercise.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 22,
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: MyColors.branco,
             ),
-          )),
+            ),
+
+            Text(modelExercise.training,
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+              color: MyColors.branco,
+            ),
+            ),
+          ]),
+          centerTitle: true,
+          toolbarHeight: 72,
+        ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // ignore: avoid_print
           print('Adicionar exercício');
         },
         child: const Icon(Icons.add),
@@ -55,9 +70,8 @@ class ExerciseScreen extends StatelessWidget {
         margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 227, 187, 255),
+          color: MyColors.roxoClarinho,
           borderRadius: BorderRadius.circular(16.0),
-        
         ),
         child: 
         ListView(
@@ -85,7 +99,7 @@ class ExerciseScreen extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Color.fromARGB(255, 105, 0, 181),
+                color: MyColors.roxoForte,
               ),
             ),
             const SizedBox(height: 10),
@@ -93,21 +107,21 @@ class ExerciseScreen extends StatelessWidget {
               modelExercise.description,
               style: const TextStyle(
                 fontSize: 16,
-                color: Color.fromARGB(255, 105, 0, 181),
+                color: MyColors.roxoForte,
               ),
             ),
 
             //Divider
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Divider(color: Color.fromARGB(255, 105, 0, 181)),
+              child: Divider(color: MyColors.roxoForte),
             ),
             const Text(
               'Como estou me sentido?',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: Color.fromARGB(255, 105, 0, 181),
+                color: MyColors.roxoForte,
               ),
             ),
             const SizedBox(height: 10),
@@ -137,9 +151,10 @@ class ExerciseScreen extends StatelessWidget {
                   trailing: IconButton(
                     icon: const Icon(
                       Icons.delete,
-                      color: Color.fromARGB(255, 105, 0, 181), 
+                      color: MyColors.roxoForte, 
                     ),
                     onPressed: () {
+                      // ignore: avoid_print
                       print("Deletar Sentimento");
                     },
                   ),
